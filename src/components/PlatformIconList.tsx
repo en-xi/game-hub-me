@@ -2,6 +2,7 @@ import { HStack, Icon } from "@chakra-ui/react";
 import { IconType } from "react-icons";
 import { BsGlobe } from "react-icons/bs";
 import {
+  FaAndroid,
   FaApple,
   FaLinux,
   FaPlaystation,
@@ -25,6 +26,7 @@ const iconMap: { [key: string]: IconType } = {
   linux: FaLinux,
   ios: MdPhoneIphone,
   web: BsGlobe,
+  android: FaAndroid,
 };
 
 const PlatformIconList = ({ platforms }: Props) => {
