@@ -8,7 +8,7 @@ type Props = {
   selectedPlatform: Platform | null;
 };
 
-export default function PlatformMenu({
+export default function PlatformSelector({
   onSelectedPlatform,
   selectedPlatform,
 }: Props) {
