@@ -11,6 +11,7 @@ import { Genre } from "./hooks/useGenres";
 export type QueryObject = {
   genre: Genre | null;
   platform: Platform | null;
+  sortOrder: string;
 };
 
 const App = () => {
@@ -50,7 +51,12 @@ const App = () => {
               setQueryObject({ ...queryObject, platform })
             }
           />
-          <SortSelector />
+          <SortSelector
+            sortOrder={queryObject.sortOrder}
+            onSelectedSortOrder={(sortOrder) =>
+              setQueryObject({ ...queryObject, sortOrder })
+            }
+          />
         </HStack>
         <GameGrid queryObject={queryObject} />
       </GridItem>
