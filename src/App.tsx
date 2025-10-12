@@ -12,6 +12,7 @@ export type QueryObject = {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
+  searchText: string;
 };
 
 const App = () => {
@@ -31,7 +32,11 @@ const App = () => {
       }}
     >
       <GridItem area="nav">
-        <NavBar />
+        <NavBar
+          setSearchText={(searchText) =>
+            setQueryObject({ ...queryObject, searchText })
+          }
+        />
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
