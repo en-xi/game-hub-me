@@ -5,10 +5,15 @@ import {
   Image,
   List,
   ListItem,
-  Spinner,
 } from "@chakra-ui/react";
-import useGenres, { Genre } from "../hooks/useGenres";
+import genres from "../data/genres";
 import getCropImageUrl from "../services/image-url";
+
+interface Genre {
+  id: number;
+  name: string;
+  image_background: string;
+}
 
 type Props = {
   onSelectedGenre: (genre: Genre) => void;
@@ -16,12 +21,6 @@ type Props = {
 };
 
 export default function GenreList({ onSelectedGenre, selectedGenre }: Props) {
-  const { data, error, isLoading } = useGenres();
-
-  if (error) return null;
-
-  if (isLoading) return <Spinner />;
-
   return (
     <>
       <Heading fontSize={"2xl"} marginBottom={3}>
@@ -29,7 +28,7 @@ export default function GenreList({ onSelectedGenre, selectedGenre }: Props) {
       </Heading>
 
       <List>
-        {data.map((genre) => (
+        {genres.map((genre) => (
           <ListItem key={genre.id} paddingY={"5px"}>
             <HStack>
               <Image
