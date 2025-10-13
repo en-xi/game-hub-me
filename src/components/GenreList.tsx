@@ -9,7 +9,7 @@ import {
 import genres from "../data/genres";
 import getCropImageUrl from "../services/image-url";
 
-interface Genre {
+export interface Genre {
   id: number;
   name: string;
   image_background: string;
