@@ -23,7 +23,7 @@ type Props = {
 export default function GenreList({ onSelectedGenre, selectedGenre }: Props) {
   return (
     <>
-      <Heading fontSize={"2xl"} marginBottom={3}>
+      <Heading marginTop={9} fontSize={"2xl"} marginBottom={3}>
         Genres
       </Heading>
 
@@ -41,7 +41,7 @@ export default function GenreList({ onSelectedGenre, selectedGenre }: Props) {
                 whiteSpace={"normal"}
                 textAlign={"left"}
                 variant="link"
-                fontSize={"lg"}
+                fontSize={"md"}
                 onClick={() => onSelectedGenre(genre)}
                 fontWeight={
                   genre.id === selectedGenre?.id ? "extrabold" : "normal"
