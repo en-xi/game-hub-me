@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { QueryObject } from "../App";
 import { FetchResponse, getAll } from "../services/api-client";
 
@@ -18,17 +18,21 @@ export interface Game {
 }
 
 const useGames = (queryObject: QueryObject) =>
-  useQuery<FetchResponse<Game>, Error>({
+  useInfiniteQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", queryObject],
-    queryFn: () =>
+    queryFn: ({ pageParam = 1 }) =>
       getAll<Game>("/games", {
         params: {
           genres: queryObject.genre?.id,
           parent_platforms: queryObject.platform?.id,
           ordering: queryObject.sortOrder,
           search: queryObject.searchText,
+          page: pageParam,
         },
       }),
+    getNextPageParam: (lastPage, allPages) => {
+      return lastPage.next ? allPages.length + 1 : undefined;
+    },
   });
 
 export default useGames;
