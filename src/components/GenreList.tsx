@@ -11,10 +11,10 @@ import getCropImageUrl from "../services/image-url";
 
 type Props = {
   onSelectedGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  selectedGenreId?: number;
 };
 
-export default function GenreList({ onSelectedGenre, selectedGenre }: Props) {
+export default function GenreList({ onSelectedGenre, selectedGenreId }: Props) {
   const { data } = useGenres();
   return (
     <>
@@ -39,7 +39,7 @@ export default function GenreList({ onSelectedGenre, selectedGenre }: Props) {
                 fontSize={"md"}
                 onClick={() => onSelectedGenre(genre)}
                 fontWeight={
-                  genre.id === selectedGenre?.id ? "extrabold" : "normal"
+                  genre.id === selectedGenreId ? "extrabold" : "normal"
                 }
               >
                 {genre.name}

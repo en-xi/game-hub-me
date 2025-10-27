@@ -23,8 +23,8 @@ const useGames = (queryObject: QueryObject) =>
     queryFn: ({ pageParam = 1 }) =>
       getAll<Game>("/games", {
         params: {
-          genres: queryObject.genre?.id,
-          parent_platforms: queryObject.platform?.id,
+          genres: queryObject.genreId,
+          parent_platforms: queryObject.platformId,
           ordering: queryObject.sortOrder,
           search: queryObject.searchText,
           page: pageParam,

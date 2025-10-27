@@ -6,12 +6,10 @@ import GenreList from "./components/GenreList";
 import NavBar from "./components/NavBar";
 import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
-import { Platform } from "./hooks/useGames";
-import { Genre } from "./hooks/useGenres";
 
 export type QueryObject = {
-  genre: Genre | null;
-  platform: Platform | null;
+  genreId?: number;
+  platformId?: number;
   sortOrder: string;
   searchText: string;
 };
@@ -43,9 +41,9 @@ const App = () => {
         <GridItem area="aside" paddingX={5}>
           <GenreList
             onSelectedGenre={(genre) =>
-              setQueryObject({ ...queryObject, genre })
+              setQueryObject({ ...queryObject, genreId: genre.id })
             }
-            selectedGenre={queryObject.genre}
+            selectedGenreId={queryObject.genreId}
           />
         </GridItem>
       </Show>
@@ -54,9 +52,9 @@ const App = () => {
           <GameHeading queryObject={queryObject} />
           <HStack spacing={5} marginBottom={5}>
             <PlatformSelector
-              selectedPlatform={queryObject.platform}
+              selectedPlatformId={queryObject.platformId}
               onSelectedPlatform={(platform) =>
-                setQueryObject({ ...queryObject, platform })
+                setQueryObject({ ...queryObject, platformId: platform.id })
               }
             />
             <SortSelector
