@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
+import { Game } from "../hooks/useGames";
 
 export interface FetchResponse<T> {
   count: number;
@@ -15,3 +16,6 @@ const axiosInstance = axios.create({
 
 export const getAll = <T>(endpoint: string, config?: AxiosRequestConfig) =>
   axiosInstance.get<FetchResponse<T>>(endpoint, config).then((res) => res.data);
+
+export const getGame = (id: number | string) =>
+  axiosInstance.get<Game>("/games/" + id).then((res) => res.data);
