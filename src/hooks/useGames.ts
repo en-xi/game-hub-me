@@ -1,24 +1,8 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import ms from "ms";
+import { Game } from "../entities/Game";
 import { FetchResponse, getAll } from "../services/api-client";
 import useGameQuery from "../store";
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
-
-export interface Game {
-  id: number;
-  slug: string;
-  name: string;
-  background_image: string;
-  parent_platforms: { platform: Platform }[];
-  metacritic: number;
-  rating_top: number;
-  description_raw: string;
-}
 
 const useGames = () => {
   const gameQuery = useGameQuery((s) => s.gameQuery);
