@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import CriticScore from "../components/CriticScore";
 import DefinitionItem from "../components/DefinitionItem";
 import ExpandableText from "../components/ExpandableText";
+import GameScreenshots from "../components/GameScreenshots";
 import GameTrailer from "../components/GameTrailer";
 import useGame from "../hooks/useGame";
 
@@ -40,6 +41,7 @@ const GamesDetailPage = () => {
       </SimpleGrid>
 
       <GameTrailer gameId={game.id} />
+      <GameScreenshots gameId={game.id} />
     </>
   );
 };

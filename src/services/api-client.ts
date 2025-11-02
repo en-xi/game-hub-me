@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { Game } from "../entities/Game";
+import { Screenshot } from "../entities/Screenshot";
 import { Trailer } from "../entities/Trailer";
 
 export interface FetchResponse<T> {
@@ -24,4 +25,9 @@ export const getGame = (id: number | string) =>
 export const getTrailer = (gameId: number) =>
   axiosInstance
     .get<FetchResponse<Trailer>>(`/games/${gameId}/movies`)
+    .then((res) => res.data);
+
+export const getScreenshots = (gameId: number) =>
+  axiosInstance
+    .get<FetchResponse<Screenshot>>(`/games/${gameId}/screenshots`)
     .then((res) => res.data);
