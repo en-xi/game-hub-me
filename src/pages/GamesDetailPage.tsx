@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import CriticScore from "../components/CriticScore";
 import DefinitionItem from "../components/DefinitionItem";
 import ExpandableText from "../components/ExpandableText";
+import GameTrailer from "../components/GameTrailer";
 import useGame from "../hooks/useGame";
 
 const GamesDetailPage = () => {
@@ -16,6 +17,7 @@ const GamesDetailPage = () => {
     <>
       <Heading>{game.name}</Heading>
       <ExpandableText>{game.description_raw}</ExpandableText>
+
       <SimpleGrid columns={2} as={"dl"}>
         <DefinitionItem term="Platforms">
           {game.parent_platforms.map(({ platform }) => (
@@ -36,6 +38,8 @@ const GamesDetailPage = () => {
           ))}
         </DefinitionItem>
       </SimpleGrid>
+
+      <GameTrailer gameId={game.id} />
     </>
   );
 };
